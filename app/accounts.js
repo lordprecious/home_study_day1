@@ -43,8 +43,26 @@ function Account(name, balance) {
       }
       return true;
     }
+  //subclass Savings account
+  function SavingsAccount(name,balance){
+    Account.call(this,name,balance);
+    
 
+    }
+    //overrides the parents class withdraw method;
+    SavingsAccount.prototype.withdraw = function (amount){
+      if (amount < 500) {
+        console.error('You cannot withdraw less than 500!');
+        return false;
+      }else {
+        this.balance -= amount;
+        return true;
+      }
 
+    }
+
+Account.prototype=new Account();
 module.exports = {
-    Account: Account
+    Account: Account,
+    SavingsAccount: SavingsAccount
 }
