@@ -1,6 +1,7 @@
 'use strict'
 
 var Account = require('../app/accounts.js').Account
+var SavingsAccount = require('../app/accounts.js').SavingsAccount
 
 
 describe("tests for Account transactions", function(){
@@ -86,6 +87,16 @@ describe("tests for Account transactions", function(){
 	    it("The class should return true for a valid value  of withdrawal", function() {
 	      var acct = new Account('mikey', 500);
 	      expect(acct.withdraw(200)).toEqual(true);
+	    });
+
+	    it("The class should return true for a valid value  of withdrawal", function() {
+	      var acct = new SavingsAccount('mikey', 1000);
+	      expect(acct.withdraw(500)).toEqual(true);
+	    });
+
+	    it("The class should return false for an invalid value  of withdrawal", function() {
+	      var acct = new SavingsAccount('mikey', 1000);
+	      expect(acct.withdraw(50)).toEqual(false);
 	    });
 	});
 
